@@ -1,4 +1,3 @@
-// src/components/MainLayout.tsx
 import { Layout, Menu, theme } from 'antd';
 import { VideoCameraOutlined, HomeOutlined } from '@ant-design/icons';
 import { Link, Outlet, useLocation } from 'react-router-dom';
@@ -10,7 +9,6 @@ export const MainLayout = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   
-  // Получаем текущий путь, чтобы меню подсвечивало нужную вкладку
   const location = useLocation();
   const selectedKey = location.pathname.includes('/films') ? '2' : '1';
 
@@ -18,7 +16,7 @@ export const MainLayout = () => {
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ display: 'flex', alignItems: 'center', background: '#fff', padding: '0 48px' }}>
         <div style={{ fontWeight: '900', fontSize: '22px', color: '#fa8c16', marginRight: '40px', letterSpacing: '1px' }}>
-          PIRAT.tv
+          MoviesPlatform
         </div>
         <Menu
           theme="light"
@@ -26,8 +24,8 @@ export const MainLayout = () => {
           selectedKeys={[selectedKey]}
           style={{ flex: 1, minWidth: 0, borderBottom: 'none' }}
           items={[
-            { key: '1', icon: <HomeOutlined />, label: <Link to="/">Главная</Link> },
-            { key: '2', icon: <VideoCameraOutlined />, label: <Link to="/films">Каталог</Link> },
+            { key: '1', icon: <HomeOutlined />, label: <Link to="/">Home</Link> },
+            { key: '2', icon: <VideoCameraOutlined />, label: <Link to="/films">Catalog</Link> },
           ]}
         />
       </Header>
@@ -42,7 +40,6 @@ export const MainLayout = () => {
             boxShadow: '0 4px 24px rgba(0,0,0,0.04)'
           }}
         >
-          {/* Outlet работает как "окно", куда React Router будет вставлять контент текущей страницы */}
           <Outlet />
         </div>
       </Content>
