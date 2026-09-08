@@ -2,7 +2,7 @@ import apiClient from "../ApiClient";
 import type{Film } from "../../types/Film";
 export const FilmService = {
     getAllFilms: async() => {
-        const response = await apiClient.get<Film[]>('/Film');
+        const response = await apiClient.get<Film[]>('/Films');
         return response.data;
     },
     createFilm: async(filmData:Omit<Film,'id'>) => {
